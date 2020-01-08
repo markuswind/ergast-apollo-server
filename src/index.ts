@@ -1,12 +1,18 @@
 import { ApolloServer } from 'apollo-server';
 
-import { ConstructorsProvider, DriversProvider } from './providers';
+import {
+  CircuitsProvider,
+  ConstructorsProvider,
+  DriversProvider
+} from './providers';
+
 import { resolvers, typeDefs } from './resolvers';
 
 // MARK: types
 
 export interface Context {
   dataSources: {
+    circuitsProvider: CircuitsProvider;
     constructorsProvider: ConstructorsProvider;
     driversProvider: DriversProvider;
   };
@@ -16,6 +22,7 @@ export interface Context {
 
 const dataSources = (): Context['dataSources'] => {
   return {
+    circuitsProvider: new CircuitsProvider(),
     constructorsProvider: new ConstructorsProvider(),
     driversProvider: new DriversProvider()
   };

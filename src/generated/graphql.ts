@@ -12,6 +12,14 @@ export type Scalars = {
   Float: number,
 };
 
+export type Circuit = {
+   __typename?: 'Circuit',
+  circuitId: Scalars['String'],
+  url: Scalars['String'],
+  circuitName: Scalars['String'],
+  Location: Location,
+};
+
 export type Constructor = {
    __typename?: 'Constructor',
   constructorId: Scalars['String'],
@@ -43,13 +51,33 @@ export type DriverConstructorArgs = {
   year: Scalars['Int']
 };
 
+export type Location = {
+   __typename?: 'Location',
+  lat: Scalars['Float'],
+  long: Scalars['Float'],
+  locality: Scalars['String'],
+  country: Scalars['String'],
+};
+
 export type Query = {
    __typename?: 'Query',
+  circuit?: Maybe<Circuit>,
+  circuits?: Maybe<Array<Circuit>>,
   getConstructor?: Maybe<Constructor>,
   constructors?: Maybe<Array<Constructor>>,
   driver?: Maybe<Driver>,
   drivers?: Maybe<Array<Driver>>,
   _empty?: Maybe<Scalars['String']>,
+};
+
+
+export type QueryCircuitArgs = {
+  circuitId: Scalars['String']
+};
+
+
+export type QueryCircuitsArgs = {
+  year: Scalars['Int']
 };
 
 
@@ -144,8 +172,11 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  Constructor: ResolverTypeWrapper<Constructor>,
+  Circuit: ResolverTypeWrapper<Circuit>,
+  Location: ResolverTypeWrapper<Location>,
+  Float: ResolverTypeWrapper<Scalars['Float']>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
+  Constructor: ResolverTypeWrapper<Constructor>,
   Driver: ResolverTypeWrapper<Driver>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
@@ -154,10 +185,20 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Query: {},
   String: Scalars['String'],
-  Constructor: Constructor,
+  Circuit: Circuit,
+  Location: Location,
+  Float: Scalars['Float'],
   Int: Scalars['Int'],
+  Constructor: Constructor,
   Driver: Driver,
   Boolean: Scalars['Boolean'],
+};
+
+export type CircuitResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Circuit'] = ResolversParentTypes['Circuit']> = {
+  circuitId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  circuitName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  Location?: Resolver<ResolversTypes['Location'], ParentType, ContextType>,
 };
 
 export type ConstructorResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Constructor'] = ResolversParentTypes['Constructor']> = {
@@ -179,7 +220,16 @@ export type DriverResolvers<ContextType = Context, ParentType extends ResolversP
   nationality?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
 };
 
+export type LocationResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Location'] = ResolversParentTypes['Location']> = {
+  lat?: Resolver<ResolversTypes['Float'], ParentType, ContextType>,
+  long?: Resolver<ResolversTypes['Float'], ParentType, ContextType>,
+  locality?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  country?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  circuit?: Resolver<Maybe<ResolversTypes['Circuit']>, ParentType, ContextType, RequireFields<QueryCircuitArgs, 'circuitId'>>,
+  circuits?: Resolver<Maybe<Array<ResolversTypes['Circuit']>>, ParentType, ContextType, RequireFields<QueryCircuitsArgs, 'year'>>,
   getConstructor?: Resolver<Maybe<ResolversTypes['Constructor']>, ParentType, ContextType, RequireFields<QueryGetConstructorArgs, 'constructorId'>>,
   constructors?: Resolver<Maybe<Array<ResolversTypes['Constructor']>>, ParentType, ContextType, RequireFields<QueryConstructorsArgs, 'year'>>,
   driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
@@ -188,8 +238,10 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
 };
 
 export type Resolvers<ContextType = Context> = {
+  Circuit?: CircuitResolvers<ContextType>,
   Constructor?: ConstructorResolvers<ContextType>,
   Driver?: DriverResolvers<ContextType>,
+  Location?: LocationResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
 };
 
