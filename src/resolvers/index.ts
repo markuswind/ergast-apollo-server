@@ -4,12 +4,15 @@ import merge from 'lodash.merge';
 import * as constructorsResolver from './constructors';
 import * as driversResolver from './drivers';
 
-// NOTE: We're defining the `Query` type here, so we can `extend Query` in the seperate files.
+// MARK: base types
+// NOTE: these can be extended in multiple type definitions
 const baseTypeDefs = gql`
   type Query {
     _empty: String
   }
 `;
+
+// MARK: composition
 
 export const typeDefs = [
   baseTypeDefs,

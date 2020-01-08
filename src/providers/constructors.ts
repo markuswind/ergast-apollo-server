@@ -12,6 +12,8 @@ export class ConstructorsProvider extends RESTDataSource {
     this.baseURL = BASE_URLS.ergast;
   }
 
+  // MARK: api calls
+
   public async getConstructor(args: QueryGetConstructorArgs) {
     const result = await this.get(`constructors/${args.constructorId}.json`);
     const constructorTable = this.parseConstructorTable(result);
@@ -31,6 +33,8 @@ export class ConstructorsProvider extends RESTDataSource {
     const result = await this.get(`${args.year}/constructors.json`);
     return this.parseConstructorTable(result);
   }
+
+  // MARK: result parsing
 
   private parseConstructorTable = (result: any) =>
     result.MRData.ConstructorTable.Constructors;

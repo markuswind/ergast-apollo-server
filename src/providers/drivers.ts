@@ -9,6 +9,8 @@ export class DriversProvider extends RESTDataSource {
     this.baseURL = BASE_URLS.ergast;
   }
 
+  // MARK: api calls
+
   public async getDriver(args: QueryDriverArgs) {
     const result = await this.get(`drivers/${args.driverId}.json`);
     const driverTable = this.parseDriverTable(result);
@@ -20,6 +22,8 @@ export class DriversProvider extends RESTDataSource {
     const result = await this.get(`${args.year}/drivers.json`);
     return this.parseDriverTable(result);
   }
+
+  // MARK: result parsing
 
   private parseDriverTable = (result: any) => result.MRData.DriverTable.Drivers;
 }
