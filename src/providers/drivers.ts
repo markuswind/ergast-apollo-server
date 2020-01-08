@@ -1,10 +1,12 @@
 import { RESTDataSource } from 'apollo-datasource-rest';
+
+import { BASE_URLS } from '../constants';
 import { QueryDriverArgs, QueryDriversArgs } from '../generated/graphql';
 
 export class DriversProvider extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'https://ergast.com/api/f1/';
+    this.baseURL = BASE_URLS.ergast;
   }
 
   public async getDriver(args: QueryDriverArgs) {
