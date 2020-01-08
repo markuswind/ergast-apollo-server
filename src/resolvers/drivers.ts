@@ -20,6 +20,7 @@ export const typeDefs = gql`
 
 export const resolvers: IResolvers = {
   Query: {
-    drivers: (_, __, ctx) => ctx.dataSources.driversProvider.getDrivers()
+    driver: (_, args, ctx) => ctx.dataSources.driversProvider.getDriver(args),
+    drivers: (_, args, ctx) => ctx.dataSources.driversProvider.getDrivers(args)
   }
 };

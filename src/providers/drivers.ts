@@ -1,30 +1,23 @@
-import { DataSource } from 'apollo-datasource';
+import { RESTDataSource } from 'apollo-datasource-rest';
+import { QueryDriverArgs, QueryDriversArgs } from '../generated/graphql';
 
-const drivers = [
-  {
-    driverId: 'albon',
-    permanentNumber: '23',
-    code: 'ALB',
-    url: 'http://en.wikipedia.org/wiki/Alexander_Albon',
-    givenName: 'Alexander',
-    familyName: 'Albon',
-    dateOfBirth: '1996-03-23',
-    nationality: 'Thai'
-  },
-  {
-    driverId: 'bottas',
-    permanentNumber: '77',
-    code: 'BOT',
-    url: 'http://en.wikipedia.org/wiki/Valtteri_Bottas',
-    givenName: 'Valtteri',
-    familyName: 'Bottas',
-    dateOfBirth: '1989-08-28',
-    nationality: 'Finnish'
+export class DriversProvider extends RESTDataSource {
+  constructor() {
+    super();
+    this.baseURL = 'https://ergast.com/api/f1/';
   }
-];
 
-export class DriversProvider extends DataSource {
-  public async getDrivers() {
-    return drivers;
+  public async getDriver(args: QueryDriverArgs) {
+    const result = await this.get(`drivers/${args.driverId}.json`);
+    const driverTable = this.parseDriverTable(result);
+
+    return driverTable[0];
   }
+
+  public async getDrivers(args: QueryDriversArgs) {
+    const result = await this.get(`${args.year}/drivers.json`);
+    return this.parseDriverTable(result);
+  }
+
+  private parseDriverTable = (result: any) => result.MRData.DriverTable.Drivers;
 }
