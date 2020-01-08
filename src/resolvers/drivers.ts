@@ -12,7 +12,7 @@ export const typeDefs = gql`
     nationality: String!
   }
 
-  type Query {
+  extend type Query {
     driver(driverId: String!): Driver
     drivers(year: Int!): [Driver!]
   }

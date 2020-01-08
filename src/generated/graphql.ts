@@ -12,8 +12,23 @@ export type Scalars = {
   Float: number,
 };
 
+export type Constructor = {
+   __typename?: 'Constructor',
+  constructorId: Scalars['String'],
+  url: Scalars['String'],
+  name: Scalars['String'],
+  nationality: Scalars['String'],
+  drivers?: Maybe<Array<Driver>>,
+};
+
+
+export type ConstructorDriversArgs = {
+  year: Scalars['Int']
+};
+
 export type Driver = {
    __typename?: 'Driver',
+  constructor: Constructor,
   driverId: Scalars['String'],
   code: Scalars['String'],
   url: Scalars['String'],
@@ -23,10 +38,28 @@ export type Driver = {
   nationality: Scalars['String'],
 };
 
+
+export type DriverConstructorArgs = {
+  year: Scalars['Int']
+};
+
 export type Query = {
    __typename?: 'Query',
+  getConstructor?: Maybe<Constructor>,
+  constructors?: Maybe<Array<Constructor>>,
   driver?: Maybe<Driver>,
   drivers?: Maybe<Array<Driver>>,
+  _empty?: Maybe<Scalars['String']>,
+};
+
+
+export type QueryGetConstructorArgs = {
+  constructorId: Scalars['String']
+};
+
+
+export type QueryConstructorsArgs = {
+  year: Scalars['Int']
 };
 
 
@@ -111,8 +144,9 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  Driver: ResolverTypeWrapper<Driver>,
+  Constructor: ResolverTypeWrapper<Constructor>,
   Int: ResolverTypeWrapper<Scalars['Int']>,
+  Driver: ResolverTypeWrapper<Driver>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
 
@@ -120,12 +154,22 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Query: {},
   String: Scalars['String'],
-  Driver: Driver,
+  Constructor: Constructor,
   Int: Scalars['Int'],
+  Driver: Driver,
   Boolean: Scalars['Boolean'],
 };
 
+export type ConstructorResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Constructor'] = ResolversParentTypes['Constructor']> = {
+  constructorId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  name?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  nationality?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<ConstructorDriversArgs, 'year'>>,
+};
+
 export type DriverResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Driver'] = ResolversParentTypes['Driver']> = {
+  constructor?: Resolver<ResolversTypes['Constructor'], ParentType, ContextType, RequireFields<DriverConstructorArgs, 'year'>>,
   driverId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   code?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
@@ -136,11 +180,15 @@ export type DriverResolvers<ContextType = Context, ParentType extends ResolversP
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  getConstructor?: Resolver<Maybe<ResolversTypes['Constructor']>, ParentType, ContextType, RequireFields<QueryGetConstructorArgs, 'constructorId'>>,
+  constructors?: Resolver<Maybe<Array<ResolversTypes['Constructor']>>, ParentType, ContextType, RequireFields<QueryConstructorsArgs, 'year'>>,
   driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
   drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<QueryDriversArgs, 'year'>>,
+  _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
 };
 
 export type Resolvers<ContextType = Context> = {
+  Constructor?: ConstructorResolvers<ContextType>,
   Driver?: DriverResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
 };
