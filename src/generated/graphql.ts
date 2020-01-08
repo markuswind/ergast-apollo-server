@@ -12,21 +12,31 @@ export type Scalars = {
   Float: number,
 };
 
-export type Book = {
-   __typename?: 'Book',
-  title?: Maybe<Scalars['String']>,
-  author?: Maybe<Scalars['String']>,
+export type Driver = {
+   __typename?: 'Driver',
+  driverId: Scalars['String'],
+  code: Scalars['String'],
+  url: Scalars['String'],
+  givenName: Scalars['String'],
+  familyName: Scalars['String'],
+  dateOfBirth: Scalars['String'],
+  nationality: Scalars['String'],
 };
 
 export type Query = {
    __typename?: 'Query',
-  book?: Maybe<Book>,
-  books?: Maybe<Array<Maybe<Book>>>,
+  driver?: Maybe<Driver>,
+  drivers?: Maybe<Array<Driver>>,
 };
 
 
-export type QueryBookArgs = {
-  id: Scalars['Int']
+export type QueryDriverArgs = {
+  driverId: Scalars['String']
+};
+
+
+export type QueryDriversArgs = {
+  year: Scalars['Int']
 };
 
 
@@ -100,33 +110,38 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 /** Mapping between all available schema types and the resolvers types */
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
-  Int: ResolverTypeWrapper<Scalars['Int']>,
-  Book: ResolverTypeWrapper<Book>,
   String: ResolverTypeWrapper<Scalars['String']>,
+  Driver: ResolverTypeWrapper<Driver>,
+  Int: ResolverTypeWrapper<Scalars['Int']>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
 
 /** Mapping between all available schema types and the resolvers parents */
 export type ResolversParentTypes = {
   Query: {},
-  Int: Scalars['Int'],
-  Book: Book,
   String: Scalars['String'],
+  Driver: Driver,
+  Int: Scalars['Int'],
   Boolean: Scalars['Boolean'],
 };
 
-export type BookResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Book'] = ResolversParentTypes['Book']> = {
-  title?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  author?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+export type DriverResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Driver'] = ResolversParentTypes['Driver']> = {
+  driverId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  code?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  givenName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  familyName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  dateOfBirth?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  nationality?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
-  book?: Resolver<Maybe<ResolversTypes['Book']>, ParentType, ContextType, RequireFields<QueryBookArgs, 'id'>>,
-  books?: Resolver<Maybe<Array<Maybe<ResolversTypes['Book']>>>, ParentType, ContextType>,
+  driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
+  drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<QueryDriversArgs, 'year'>>,
 };
 
 export type Resolvers<ContextType = Context> = {
-  Book?: BookResolvers<ContextType>,
+  Driver?: DriverResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
 };
 
