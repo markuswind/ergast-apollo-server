@@ -119,6 +119,7 @@ export type Query = {
   pitstops?: Maybe<Array<PitStop>>,
   qualifyingResults?: Maybe<Array<QualifyingResult>>,
   results?: Maybe<Array<Result>>,
+  schedule?: Maybe<Array<Race>>,
 };
 
 
@@ -167,6 +168,22 @@ export type QueryQualifyingResultsArgs = {
 export type QueryResultsArgs = {
   year: Scalars['Int'],
   round: Scalars['Int']
+};
+
+
+export type QueryScheduleArgs = {
+  year: Scalars['Int']
+};
+
+export type Race = {
+   __typename?: 'Race',
+  season: Scalars['Int'],
+  round: Scalars['Int'],
+  url: Scalars['String'],
+  raceName: Scalars['String'],
+  date: Scalars['String'],
+  time: Scalars['String'],
+  Circuit: Circuit,
 };
 
 export type Result = {
@@ -270,6 +287,7 @@ export type ResolversTypes = {
   AverageSpeed: ResolverTypeWrapper<AverageSpeed>,
   PitStop: ResolverTypeWrapper<PitStop>,
   QualifyingResult: ResolverTypeWrapper<QualifyingResult>,
+  Race: ResolverTypeWrapper<Race>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
 
@@ -289,6 +307,7 @@ export type ResolversParentTypes = {
   AverageSpeed: AverageSpeed,
   PitStop: PitStop,
   QualifyingResult: QualifyingResult,
+  Race: Race,
   Boolean: Scalars['Boolean'],
 };
 
@@ -368,6 +387,17 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   pitstops?: Resolver<Maybe<Array<ResolversTypes['PitStop']>>, ParentType, ContextType, RequireFields<QueryPitstopsArgs, 'year' | 'round'>>,
   qualifyingResults?: Resolver<Maybe<Array<ResolversTypes['QualifyingResult']>>, ParentType, ContextType, RequireFields<QueryQualifyingResultsArgs, 'year' | 'round'>>,
   results?: Resolver<Maybe<Array<ResolversTypes['Result']>>, ParentType, ContextType, RequireFields<QueryResultsArgs, 'year' | 'round'>>,
+  schedule?: Resolver<Maybe<Array<ResolversTypes['Race']>>, ParentType, ContextType, RequireFields<QueryScheduleArgs, 'year'>>,
+};
+
+export type RaceResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Race'] = ResolversParentTypes['Race']> = {
+  season?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  round?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  raceName?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  date?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  time?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  Circuit?: Resolver<ResolversTypes['Circuit'], ParentType, ContextType>,
 };
 
 export type ResultResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Result'] = ResolversParentTypes['Result']> = {
@@ -395,6 +425,7 @@ export type Resolvers<ContextType = Context> = {
   PitStop?: PitStopResolvers<ContextType>,
   QualifyingResult?: QualifyingResultResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
+  Race?: RaceResolvers<ContextType>,
   Result?: ResultResolvers<ContextType>,
   Time?: TimeResolvers<ContextType>,
 };
