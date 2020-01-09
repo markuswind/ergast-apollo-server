@@ -37,7 +37,7 @@ export const typeDefs = gql`
     fastestLap: FastestLap!
   }
 
-  type Query {
+  extend type Query {
     results(year: Int!, round: Int!): [Result!]
   }
 `;
