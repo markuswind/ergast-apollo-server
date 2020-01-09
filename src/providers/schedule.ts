@@ -1,14 +1,7 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
-import { BASE_URLS } from '../constants';
 import { QueryScheduleArgs } from '../generated/graphql';
+import { RestDataSource } from '../utils/RestDataSource';
 
-export class ScheduleProvider extends RESTDataSource {
-  constructor() {
-    super();
-    this.baseURL = BASE_URLS.ergast;
-  }
-
+export class ScheduleProvider extends RestDataSource {
   // MARK: api calls
 
   public async getSchedule(args: QueryScheduleArgs) {

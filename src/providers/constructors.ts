@@ -1,17 +1,10 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
-import { BASE_URLS } from '../constants';
 import {
   QueryConstructorsArgs,
   QueryGetConstructorArgs
 } from '../generated/graphql';
+import { RestDataSource } from '../utils/RestDataSource';
 
-export class ConstructorsProvider extends RESTDataSource {
-  constructor() {
-    super();
-    this.baseURL = BASE_URLS.ergast;
-  }
-
+export class ConstructorsProvider extends RestDataSource {
   // MARK: api calls
 
   public async getConstructor(args: QueryGetConstructorArgs) {

@@ -1,14 +1,7 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
-import { BASE_URLS } from '../constants';
 import { QueryDriverArgs, QueryDriversArgs } from '../generated/graphql';
+import { RestDataSource } from '../utils/RestDataSource';
 
-export class DriversProvider extends RESTDataSource {
-  constructor() {
-    super();
-    this.baseURL = BASE_URLS.ergast;
-  }
-
+export class DriversProvider extends RestDataSource {
   // MARK: api calls
 
   public async getDriver(args: QueryDriverArgs) {

@@ -1,14 +1,7 @@
-import { RESTDataSource } from 'apollo-datasource-rest';
-
-import { BASE_URLS } from '../constants';
 import { QueryStandingsArgs } from '../generated/graphql';
+import { RestDataSource } from '../utils/RestDataSource';
 
-export class StandingsProvider extends RESTDataSource {
-  constructor() {
-    super();
-    this.baseURL = BASE_URLS.ergast;
-  }
-
+export class StandingsProvider extends RestDataSource {
   // MARK: api calls
 
   public async getStandings(args: QueryStandingsArgs) {
