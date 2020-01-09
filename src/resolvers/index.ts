@@ -5,6 +5,8 @@ import * as circuitsResolver from './circuits';
 import * as constructorsResolver from './constructors';
 import * as driversResolver from './drivers';
 import * as pitstopsResolver from './pitstops';
+import * as qualifyingResultsResolver from './qualifyingResults';
+import * as resultsResolver from './results';
 
 // MARK: base types
 // NOTE: these can be extended in multiple type definitions
@@ -22,11 +24,16 @@ export const typeDefs = [
   circuitsResolver.typeDefs,
   constructorsResolver.typeDefs,
   driversResolver.typeDefs,
-  pitstopsResolver.typeDefs
+  pitstopsResolver.typeDefs,
+  qualifyingResultsResolver.typeDefs,
+  resultsResolver.typeDefs
 ];
 
 export const resolvers = merge(
   circuitsResolver.resolvers,
   constructorsResolver.resolvers,
-  driversResolver.resolvers
+  driversResolver.resolvers,
+  pitstopsResolver.resolvers,
+  qualifyingResultsResolver.resolvers,
+  resultsResolver.resolvers
 );
