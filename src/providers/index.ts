@@ -5,3 +5,4 @@ export { PitstopsProvider } from './pitstops';
 export { QualifyingResultsProvider } from './qualifyingResults';
 export { ResultsProvider } from './results';
 export { ScheduleProvider } from './schedule';
+export { StandingsProvider } from './standings';

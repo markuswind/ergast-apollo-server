@@ -7,7 +7,8 @@ import {
   PitstopsProvider,
   QualifyingResultsProvider,
   ResultsProvider,
-  ScheduleProvider
+  ScheduleProvider,
+  StandingsProvider
 } from './providers';
 
 import { resolvers, typeDefs } from './resolvers';
@@ -23,6 +24,7 @@ export interface Context {
     qualifyingResultsProvider: QualifyingResultsProvider;
     resultsProvider: ResultsProvider;
     scheduleProvider: ScheduleProvider;
+    standingsProvider: StandingsProvider;
   };
 }
 
@@ -36,7 +38,8 @@ const dataSources = (): Context['dataSources'] => {
     pitstopsProvider: new PitstopsProvider(),
     qualifyingResultsProvider: new QualifyingResultsProvider(),
     resultsProvider: new ResultsProvider(),
-    scheduleProvider: new ScheduleProvider()
+    scheduleProvider: new ScheduleProvider(),
+    standingsProvider: new StandingsProvider()
   };
 };
 

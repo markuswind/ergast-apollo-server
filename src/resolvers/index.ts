@@ -8,6 +8,7 @@ import * as pitstopsResolver from './pitstops';
 import * as qualifyingResultsResolver from './qualifyingResults';
 import * as resultsResolver from './results';
 import * as scheduleResolver from './schedule';
+import * as standingsResolver from './standings';
 
 // MARK: base types
 // NOTE: these can be extended in multiple type definitions
@@ -28,7 +29,8 @@ export const typeDefs = [
   pitstopsResolver.typeDefs,
   qualifyingResultsResolver.typeDefs,
   resultsResolver.typeDefs,
-  scheduleResolver.typeDefs
+  scheduleResolver.typeDefs,
+  standingsResolver.typeDefs
 ];
 
 export const resolvers = merge(
@@ -38,5 +40,6 @@ export const resolvers = merge(
   pitstopsResolver.resolvers,
   qualifyingResultsResolver.resolvers,
   resultsResolver.resolvers,
-  scheduleResolver.resolvers
+  scheduleResolver.resolvers,
+  standingsResolver.resolvers
 );
