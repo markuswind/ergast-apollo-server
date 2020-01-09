@@ -1,9 +1,9 @@
 {
-  "name": "apollo-server-typescript-boilerplate",
+  "name": "ergast-apollo-server",
   "version": "0.0.1",
   "description": "",
   "keywords": [],
-  "author": "",
+  "author": "markuswind@gmail.com",
   "main": "build/main/index.js",
   "typings": "build/main/index.d.ts",
   "engines": {
