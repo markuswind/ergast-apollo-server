@@ -18,7 +18,7 @@ export class StandingsProvider extends RESTDataSource {
 
   public async getDriverStandings(args: { driverId: string; year: number }) {
     const result = await this.get(
-      `drivers/${args.driverId}/${args.year}/driverStandings.json`
+      `${args.year}/drivers/${args.driverId}/driverStandings.json`
     );
 
     return this.parseStandingTable(result);

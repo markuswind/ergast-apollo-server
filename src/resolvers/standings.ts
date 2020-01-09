@@ -11,6 +11,7 @@ export const typeDefs = gql`
     positionText: String!
     points: Int!
     wins: Int!
+    Driver: Driver!
     Constructors: [Constructor!]
   }
 
