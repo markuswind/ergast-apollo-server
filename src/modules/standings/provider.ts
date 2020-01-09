@@ -1,8 +1,8 @@
 import {
   QueryConstructorStandingsArgs,
   QueryDriverStandingsArgs
-} from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+} from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class StandingsProvider extends RestDataSource {
   // MARK: api calls

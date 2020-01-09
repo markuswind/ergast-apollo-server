@@ -1,5 +1,5 @@
-import { QueryScheduleArgs } from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+import { QueryScheduleArgs } from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class ScheduleProvider extends RestDataSource {
   // MARK: api calls

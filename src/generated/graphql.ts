@@ -121,13 +121,13 @@ export type QualifyingResult = {
 
 export type Query = {
    __typename?: 'Query',
+  _empty?: Maybe<Scalars['String']>,
   circuit?: Maybe<Circuit>,
   circuits?: Maybe<Array<Circuit>>,
   getConstructor?: Maybe<Constructor>,
   constructors?: Maybe<Array<Constructor>>,
   driver?: Maybe<Driver>,
   drivers?: Maybe<Array<Driver>>,
-  _empty?: Maybe<Scalars['String']>,
   pitstops?: Maybe<Array<PitStop>>,
   qualifyingResults?: Maybe<Array<QualifyingResult>>,
   results?: Maybe<Array<Result>>,
@@ -415,13 +415,13 @@ export type QualifyingResultResolvers<ContextType = Context, ParentType extends 
 };
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
+  _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   circuit?: Resolver<Maybe<ResolversTypes['Circuit']>, ParentType, ContextType, RequireFields<QueryCircuitArgs, 'circuitId'>>,
   circuits?: Resolver<Maybe<Array<ResolversTypes['Circuit']>>, ParentType, ContextType, RequireFields<QueryCircuitsArgs, 'year'>>,
   getConstructor?: Resolver<Maybe<ResolversTypes['Constructor']>, ParentType, ContextType, RequireFields<QueryGetConstructorArgs, 'constructorId'>>,
   constructors?: Resolver<Maybe<Array<ResolversTypes['Constructor']>>, ParentType, ContextType, RequireFields<QueryConstructorsArgs, 'year'>>,
   driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
   drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<QueryDriversArgs, 'year'>>,
-  _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   pitstops?: Resolver<Maybe<Array<ResolversTypes['PitStop']>>, ParentType, ContextType, RequireFields<QueryPitstopsArgs, 'year' | 'round'>>,
   qualifyingResults?: Resolver<Maybe<Array<ResolversTypes['QualifyingResult']>>, ParentType, ContextType, RequireFields<QueryQualifyingResultsArgs, 'year' | 'round'>>,
   results?: Resolver<Maybe<Array<ResolversTypes['Result']>>, ParentType, ContextType, RequireFields<QueryResultsArgs, 'year' | 'round'>>,

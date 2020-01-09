@@ -1,8 +1,8 @@
 import {
   QueryConstructorsArgs,
   QueryGetConstructorArgs
-} from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+} from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class ConstructorsProvider extends RestDataSource {
   // MARK: api calls

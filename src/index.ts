@@ -1,30 +1,19 @@
 import { ApolloServer } from 'apollo-server';
 
-import {
-  CircuitsProvider,
-  ConstructorsProvider,
-  DriversProvider,
-  PitstopsProvider,
-  QualifyingResultsProvider,
-  ResultsProvider,
-  ScheduleProvider,
-  StandingsProvider
-} from './providers';
-
-import { resolvers, typeDefs } from './resolvers';
+import { providers, resolvers, typeDefs } from './modules';
 
 // MARK: types
 
 export interface Context {
   dataSources: {
-    circuitsProvider: CircuitsProvider;
-    constructorsProvider: ConstructorsProvider;
-    driversProvider: DriversProvider;
-    pitstopsProvider: PitstopsProvider;
-    qualifyingResultsProvider: QualifyingResultsProvider;
-    resultsProvider: ResultsProvider;
-    scheduleProvider: ScheduleProvider;
-    standingsProvider: StandingsProvider;
+    circuitsProvider: typeof providers.circuits;
+    constructorsProvider: typeof providers.constructors;
+    driversProvider: typeof providers.drivers;
+    pitstopsProvider: typeof providers.pitstops;
+    qualifyingResultsProvider: typeof providers.qualifyingResults;
+    resultsProvider: typeof providers.results;
+    scheduleProvider: typeof providers.schedule;
+    standingsProvider: typeof providers.standings;
   };
 }
 
@@ -32,14 +21,14 @@ export interface Context {
 
 const dataSources = (): Context['dataSources'] => {
   return {
-    circuitsProvider: new CircuitsProvider(),
-    constructorsProvider: new ConstructorsProvider(),
-    driversProvider: new DriversProvider(),
-    pitstopsProvider: new PitstopsProvider(),
-    qualifyingResultsProvider: new QualifyingResultsProvider(),
-    resultsProvider: new ResultsProvider(),
-    scheduleProvider: new ScheduleProvider(),
-    standingsProvider: new StandingsProvider()
+    circuitsProvider: providers.circuits,
+    constructorsProvider: providers.constructors,
+    driversProvider: providers.drivers,
+    pitstopsProvider: providers.pitstops,
+    qualifyingResultsProvider: providers.qualifyingResults,
+    resultsProvider: providers.results,
+    scheduleProvider: providers.schedule,
+    standingsProvider: providers.standings
   };
 };
 

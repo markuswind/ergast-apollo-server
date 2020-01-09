@@ -1,5 +1,5 @@
 import { gql } from 'apollo-server';
-import { IResolvers } from '../generated/graphql';
+import { IResolvers } from '../../generated/graphql';
 
 export const typeDefs = gql`
   type QualifyingResult {

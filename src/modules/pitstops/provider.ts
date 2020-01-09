@@ -1,5 +1,5 @@
-import { QueryPitstopsArgs } from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+import { QueryPitstopsArgs } from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class PitstopsProvider extends RestDataSource {
   // MARK: api calls

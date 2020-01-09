@@ -1,5 +1,5 @@
-import { QueryCircuitArgs, QueryCircuitsArgs } from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+import { QueryCircuitArgs, QueryCircuitsArgs } from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class CircuitsProvider extends RestDataSource {
   // MARK: api calls

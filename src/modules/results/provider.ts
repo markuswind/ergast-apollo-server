@@ -1,5 +1,5 @@
-import { QueryResultsArgs } from '../generated/graphql';
-import { RestDataSource } from '../utils/RestDataSource';
+import { QueryResultsArgs } from '../../generated/graphql';
+import { RestDataSource } from '../../utils/RestDataSource';
 
 export class ResultsProvider extends RestDataSource {
   // MARK: api calls
