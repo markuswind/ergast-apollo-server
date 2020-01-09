@@ -49,7 +49,7 @@ export type ConstructorResultArgs = {
 
 export type Driver = {
    __typename?: 'Driver',
-  constructor: Constructor,
+  getConstructor: Constructor,
   driverId: Scalars['String'],
   code: Scalars['String'],
   url: Scalars['String'],
@@ -62,7 +62,7 @@ export type Driver = {
 };
 
 
-export type DriverConstructorArgs = {
+export type DriverGetConstructorArgs = {
   year: Scalars['Int']
 };
 
@@ -356,7 +356,7 @@ export type ConstructorResolvers<ContextType = Context, ParentType extends Resol
 };
 
 export type DriverResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Driver'] = ResolversParentTypes['Driver']> = {
-  constructor?: Resolver<ResolversTypes['Constructor'], ParentType, ContextType, RequireFields<DriverConstructorArgs, 'year'>>,
+  getConstructor?: Resolver<ResolversTypes['Constructor'], ParentType, ContextType, RequireFields<DriverGetConstructorArgs, 'year'>>,
   driverId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   code?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,

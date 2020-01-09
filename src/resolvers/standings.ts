@@ -23,12 +23,12 @@ export const resolvers: IResolvers = {
   Query: {
     standings: (_, args, ctx) =>
       ctx.dataSources.standingsProvider.getStandings(args)
+  },
+  Driver: {
+    standing: (driver, args, ctx) =>
+      ctx.dataSources.standingsProvider.getDriverStandings({
+        driverId: driver.driverId,
+        ...args
+      })
   }
-  // Driver: {
-  //   standing: (driver, args, ctx) =>
-  //     ctx.dataSources.standingsProvider.getDriverStandings({
-  //       driverId: driver.driverId,
-  //       ...args
-  //     })
-  // }
 };

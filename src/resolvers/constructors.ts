@@ -11,7 +11,7 @@ export const typeDefs = gql`
   }
 
   extend type Driver {
-    constructor(year: Int!): Constructor!
+    getConstructor(year: Int!): Constructor!
   }
 
   extend type Query {
@@ -28,7 +28,7 @@ export const resolvers: IResolvers = {
       ctx.dataSources.constructorsProvider.getConstructors(args)
   },
   Driver: {
-    constructor: (driver, args, ctx) =>
+    getConstructor: (driver, args, ctx) =>
       ctx.dataSources.constructorsProvider.getDriverConstructor({
         year: args.year,
         driverId: driver.driverId

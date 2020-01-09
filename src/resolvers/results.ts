@@ -52,12 +52,12 @@ export const resolvers: IResolvers = {
         constructorId: constructor.constructorId,
         ...args
       })
+  },
+  Driver: {
+    result: (driver, args, ctx) =>
+      ctx.dataSources.resultsProvider.getDriverResult({
+        driverId: driver.driverId,
+        ...args
+      })
   }
-  // Driver: {
-  //   result: (driver, args, ctx) =>
-  //     ctx.dataSources.resultsProvider.getDriverResult({
-  //       driverId: driver.driverId,
-  //       ...args
-  //     })
-  // }
 };
