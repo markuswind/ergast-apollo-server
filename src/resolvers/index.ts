@@ -4,6 +4,7 @@ import merge from 'lodash.merge';
 import * as circuitsResolver from './circuits';
 import * as constructorsResolver from './constructors';
 import * as driversResolver from './drivers';
+import * as pitstopsResolver from './pitstops';
 
 // MARK: base types
 // NOTE: these can be extended in multiple type definitions
@@ -20,7 +21,8 @@ export const typeDefs = [
   baseTypeDefs,
   circuitsResolver.typeDefs,
   constructorsResolver.typeDefs,
-  driversResolver.typeDefs
+  driversResolver.typeDefs,
+  pitstopsResolver.typeDefs
 ];
 
 export const resolvers = merge(

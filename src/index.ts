@@ -3,7 +3,8 @@ import { ApolloServer } from 'apollo-server';
 import {
   CircuitsProvider,
   ConstructorsProvider,
-  DriversProvider
+  DriversProvider,
+  PitstopsProvider
 } from './providers';
 
 import { resolvers, typeDefs } from './resolvers';
@@ -15,6 +16,7 @@ export interface Context {
     circuitsProvider: CircuitsProvider;
     constructorsProvider: ConstructorsProvider;
     driversProvider: DriversProvider;
+    pitstopsProvider: PitstopsProvider;
   };
 }
 
@@ -24,7 +26,8 @@ const dataSources = (): Context['dataSources'] => {
   return {
     circuitsProvider: new CircuitsProvider(),
     constructorsProvider: new ConstructorsProvider(),
-    driversProvider: new DriversProvider()
+    driversProvider: new DriversProvider(),
+    pitstopsProvider: new PitstopsProvider()
   };
 };
 

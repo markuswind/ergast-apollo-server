@@ -59,6 +59,15 @@ export type Location = {
   country: Scalars['String'],
 };
 
+export type PitStop = {
+   __typename?: 'PitStop',
+  driverId: Scalars['String'],
+  stop: Scalars['Int'],
+  lap: Scalars['Int'],
+  time: Scalars['String'],
+  duration: Scalars['String'],
+};
+
 export type Query = {
    __typename?: 'Query',
   circuit?: Maybe<Circuit>,
@@ -68,6 +77,7 @@ export type Query = {
   driver?: Maybe<Driver>,
   drivers?: Maybe<Array<Driver>>,
   _empty?: Maybe<Scalars['String']>,
+  pitstops?: Maybe<Array<PitStop>>,
 };
 
 
@@ -98,6 +108,12 @@ export type QueryDriverArgs = {
 
 export type QueryDriversArgs = {
   year: Scalars['Int']
+};
+
+
+export type QueryPitstopsArgs = {
+  year: Scalars['Int'],
+  round: Scalars['Int']
 };
 
 
@@ -178,6 +194,7 @@ export type ResolversTypes = {
   Int: ResolverTypeWrapper<Scalars['Int']>,
   Constructor: ResolverTypeWrapper<Constructor>,
   Driver: ResolverTypeWrapper<Driver>,
+  PitStop: ResolverTypeWrapper<PitStop>,
   Boolean: ResolverTypeWrapper<Scalars['Boolean']>,
 };
 
@@ -191,6 +208,7 @@ export type ResolversParentTypes = {
   Int: Scalars['Int'],
   Constructor: Constructor,
   Driver: Driver,
+  PitStop: PitStop,
   Boolean: Scalars['Boolean'],
 };
 
@@ -227,6 +245,14 @@ export type LocationResolvers<ContextType = Context, ParentType extends Resolver
   country?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
 };
 
+export type PitStopResolvers<ContextType = Context, ParentType extends ResolversParentTypes['PitStop'] = ResolversParentTypes['PitStop']> = {
+  driverId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  stop?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  lap?: Resolver<ResolversTypes['Int'], ParentType, ContextType>,
+  time?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  duration?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+};
+
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   circuit?: Resolver<Maybe<ResolversTypes['Circuit']>, ParentType, ContextType, RequireFields<QueryCircuitArgs, 'circuitId'>>,
   circuits?: Resolver<Maybe<Array<ResolversTypes['Circuit']>>, ParentType, ContextType, RequireFields<QueryCircuitsArgs, 'year'>>,
@@ -235,6 +261,7 @@ export type QueryResolvers<ContextType = Context, ParentType extends ResolversPa
   driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
   drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<QueryDriversArgs, 'year'>>,
   _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
+  pitstops?: Resolver<Maybe<Array<ResolversTypes['PitStop']>>, ParentType, ContextType, RequireFields<QueryPitstopsArgs, 'year' | 'round'>>,
 };
 
 export type Resolvers<ContextType = Context> = {
@@ -242,6 +269,7 @@ export type Resolvers<ContextType = Context> = {
   Constructor?: ConstructorResolvers<ContextType>,
   Driver?: DriverResolvers<ContextType>,
   Location?: LocationResolvers<ContextType>,
+  PitStop?: PitStopResolvers<ContextType>,
   Query?: QueryResolvers<ContextType>,
 };
 
