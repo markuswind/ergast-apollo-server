@@ -1,11 +1,17 @@
 import { QueryResultsArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class ResultsProvider extends RestDataSource {
+export class ResultsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getResults(args: QueryResultsArgs) {
-    const result = await this.get(`${args.year}/${args.round}/results.json`);
+    const cacheOptions = await this.getCacheOptions(args);
+    const result = await this.get(
+      `${args.year}/${args.round}/results.json`,
+      undefined,
+      cacheOptions
+    );
+
     return this.parseRaceTable(result);
   }
 
@@ -14,8 +20,11 @@ export class ResultsProvider extends RestDataSource {
     round: number;
     constructorId: string;
   }) {
+    const cacheOptions = await this.getCacheOptions(args);
     const result = await this.get(
-      `/constructors/${args.constructorId}/${args.year}/${args.round}/results.json`
+      `/constructors/${args.constructorId}/${args.year}/${args.round}/results.json`,
+      undefined,
+      cacheOptions
     );
 
     return this.parseRaceTable(result)[0];
@@ -26,8 +35,11 @@ export class ResultsProvider extends RestDataSource {
     round: number;
     driverId: string;
   }) {
+    const cacheOptions = await this.getCacheOptions(args);
     const result = await this.get(
-      `drivers/${args.driverId}/${args.year}/${args.round}/results.json`
+      `drivers/${args.driverId}/${args.year}/${args.round}/results.json`,
+      undefined,
+      cacheOptions
     );
 
     return this.parseRaceTable(result)[0];

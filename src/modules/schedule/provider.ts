@@ -1,7 +1,7 @@
 import { QueryScheduleArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class ScheduleProvider extends RestDataSource {
+export class ScheduleProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getSchedule(args: QueryScheduleArgs) {
