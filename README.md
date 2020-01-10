@@ -86,6 +86,10 @@ export const providers = {
 };
 ```
 
+## Known issuess
+
+- The `constructor` queries do not follow the naming convention. Because `constructor` is a reserved keyword, we decided to use `getConstructor` instead.
+
 After this provider has been added in the `providers` object, you will have to run `npm run generate:types` in order to use in the resolvers.
 
 ## License
