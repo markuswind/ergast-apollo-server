@@ -1,6 +1,6 @@
 ## About
 
-A Graphql API which serves the Formula 1 result data from `http://ergast.com/`.
+A Graphql API which serves the Formula 1 result data from [ergast](http://ergast.com/).
 
 ## Getting started
 
@@ -86,11 +86,11 @@ export const providers = {
 };
 ```
 
+After this provider has been added in the `providers` object, you will have to run `npm run generate:types` in order to use in the resolvers.
+
 ## Known issuess
 
 - The `constructor` queries do not follow the naming convention. Because `constructor` is a reserved keyword, we decided to use `getConstructor` instead.
-
-After this provider has been added in the `providers` object, you will have to run `npm run generate:types` in order to use in the resolvers.
 
 ## License
 
