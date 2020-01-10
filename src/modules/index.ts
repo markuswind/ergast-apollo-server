@@ -22,14 +22,14 @@ const baseTypeDefs = gql`
 // MARK: composition
 
 export const providers = {
-  circuits: new circuitsModule.CircuitsProvider(),
-  constructors: new constructorsModule.ConstructorsProvider(),
-  drivers: new driversModule.DriversProvider(),
-  pitstops: new pitstopsModule.PitstopsProvider(),
-  qualifyingResults: new qualifyingResultsModule.QualifyingResultsProvider(),
-  results: new resultsModule.ResultsProvider(),
-  schedule: new scheduleModule.ScheduleProvider(),
-  standings: new standingsModule.StandingsProvider()
+  circuitsProvider: new circuitsModule.CircuitsProvider(),
+  constructorsProvider: new constructorsModule.ConstructorsProvider(),
+  driversProvider: new driversModule.DriversProvider(),
+  pitstopsProvider: new pitstopsModule.PitstopsProvider(),
+  qualifyingResultsProvider: new qualifyingResultsModule.QualifyingResultsProvider(),
+  resultsProvider: new resultsModule.ResultsProvider(),
+  scheduleProvider: new scheduleModule.ScheduleProvider(),
+  standingsProvider: new standingsModule.StandingsProvider()
 };
 
 export const typeDefs = [

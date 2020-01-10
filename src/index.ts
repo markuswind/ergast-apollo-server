@@ -1,41 +1,27 @@
 import { ApolloServer } from 'apollo-server';
-
 import { providers, resolvers, typeDefs } from './modules';
 
 // MARK: types
 
 export interface Context {
   dataSources: {
-    circuitsProvider: typeof providers.circuits;
-    constructorsProvider: typeof providers.constructors;
-    driversProvider: typeof providers.drivers;
-    pitstopsProvider: typeof providers.pitstops;
-    qualifyingResultsProvider: typeof providers.qualifyingResults;
-    resultsProvider: typeof providers.results;
-    scheduleProvider: typeof providers.schedule;
-    standingsProvider: typeof providers.standings;
+    circuitsProvider: typeof providers.circuitsProvider;
+    constructorsProvider: typeof providers.constructorsProvider;
+    driversProvider: typeof providers.driversProvider;
+    pitstopsProvider: typeof providers.pitstopsProvider;
+    qualifyingResultsProvider: typeof providers.qualifyingResultsProvider;
+    resultsProvider: typeof providers.resultsProvider;
+    scheduleProvider: typeof providers.scheduleProvider;
+    standingsProvider: typeof providers.standingsProvider;
   };
 }
 
 // MARK: composition
 
-const dataSources = (): Context['dataSources'] => {
-  return {
-    circuitsProvider: providers.circuits,
-    constructorsProvider: providers.constructors,
-    driversProvider: providers.drivers,
-    pitstopsProvider: providers.pitstops,
-    qualifyingResultsProvider: providers.qualifyingResults,
-    resultsProvider: providers.results,
-    scheduleProvider: providers.schedule,
-    standingsProvider: providers.standings
-  };
-};
-
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  dataSources
+  dataSources: () => providers
 });
 
 // MARK: main
