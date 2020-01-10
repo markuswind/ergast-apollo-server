@@ -6,8 +6,8 @@ export const typeDefs = gql`
     number: Int!
     position: Int!
     Q1: String!
-    Q2: String!
-    Q3: String!
+    Q2: String
+    Q3: String
     Driver: Driver!
     Constructor: Constructor!
   }
