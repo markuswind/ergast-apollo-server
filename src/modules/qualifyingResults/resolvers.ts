@@ -5,7 +5,7 @@ export const typeDefs = gql`
   type QualifyingResult {
     number: Int!
     position: Int!
-    Q1: String!
+    Q1: String
     Q2: String
     Q3: String
     Driver: Driver!
