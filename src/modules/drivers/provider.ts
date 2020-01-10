@@ -1,7 +1,7 @@
 import { QueryDriverArgs, QueryDriversArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class DriversProvider extends RestDataSource {
+export class DriversProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getDriver(args: QueryDriverArgs) {

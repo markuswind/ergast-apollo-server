@@ -4,8 +4,7 @@ import dayjs from 'dayjs';
 
 import { BASE_URLS, CACHE_TIMES } from '../constants';
 
-// TODO: rename to ErgastDataSource
-export class RestDataSource extends RESTDataSource {
+export class ErgastDataSource extends RESTDataSource {
   constructor() {
     super();
     this.baseURL = BASE_URLS.ergast;

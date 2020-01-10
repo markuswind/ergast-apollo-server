@@ -1,7 +1,7 @@
 import { QueryPitstopsArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class PitstopsProvider extends RestDataSource {
+export class PitstopsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getPitstops(args: QueryPitstopsArgs) {

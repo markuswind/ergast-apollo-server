@@ -1,7 +1,7 @@
 import { QueryCircuitArgs, QueryCircuitsArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class CircuitsProvider extends RestDataSource {
+export class CircuitsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getCircuit(args: QueryCircuitArgs) {

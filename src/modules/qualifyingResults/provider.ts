@@ -1,7 +1,7 @@
 import { QueryQualifyingResultsArgs } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class QualifyingResultsProvider extends RestDataSource {
+export class QualifyingResultsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getQualifyingResults(args: QueryQualifyingResultsArgs) {

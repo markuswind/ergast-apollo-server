@@ -2,9 +2,9 @@ import {
   QueryConstructorsArgs,
   QueryGetConstructorArgs
 } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class ConstructorsProvider extends RestDataSource {
+export class ConstructorsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getConstructor(args: QueryGetConstructorArgs) {

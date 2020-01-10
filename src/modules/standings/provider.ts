@@ -2,9 +2,9 @@ import {
   QueryConstructorStandingsArgs,
   QueryDriverStandingsArgs
 } from '../../generated/graphql';
-import { RestDataSource } from '../../utils/RestDataSource';
+import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
-export class StandingsProvider extends RestDataSource {
+export class StandingsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getDriverStandings(args: QueryConstructorStandingsArgs) {
