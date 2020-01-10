@@ -5,7 +5,13 @@ export class QualifyingResultsProvider extends ErgastDataSource {
   // MARK: api calls
 
   public async getQualifyingResults(args: QueryQualifyingResultsArgs) {
-    const result = await this.get(`${args.year}/${args.round}/qualifying.json`);
+    const cachingOptions = await this.getCacheOptions(args);
+    const result = await this.get(
+      `${args.year}/${args.round}/qualifying.json`,
+      undefined,
+      cachingOptions
+    );
+
     return this.parseRaceTable(result);
   }
   // MARK: result parsing
