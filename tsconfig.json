@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "target": "es2017",
-    "outDir": "build/main",
+    "outDir": "public/main",
     "rootDir": "src",
     "moduleResolution": "node",
     "module": "commonjs",
