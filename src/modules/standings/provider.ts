@@ -25,7 +25,7 @@ export class StandingsProvider extends ErgastDataSource {
       `${args.year}/constructors/${args.constructorId}/constructorStandings.json`
     );
 
-    return this.parseConstructorStandingTable(result);
+    return this.parseConstructorStandingTable(result)[0];
   }
 
   public async getDriverStanding(args: { driverId: string; year: number }) {
@@ -33,7 +33,7 @@ export class StandingsProvider extends ErgastDataSource {
       `${args.year}/drivers/${args.driverId}/driverStandings.json`
     );
 
-    return this.parseDriverStandingTable(result);
+    return this.parseDriverStandingTable(result)[0];
   }
 
   // MARK: result parsing
