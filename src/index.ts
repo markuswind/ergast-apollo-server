@@ -4,16 +4,7 @@ import { providers, resolvers, typeDefs } from './modules';
 // MARK: types
 
 export interface Context {
-  dataSources: {
-    circuitsProvider: typeof providers.circuitsProvider;
-    constructorsProvider: typeof providers.constructorsProvider;
-    driversProvider: typeof providers.driversProvider;
-    pitstopsProvider: typeof providers.pitstopsProvider;
-    qualifyingResultsProvider: typeof providers.qualifyingResultsProvider;
-    resultsProvider: typeof providers.resultsProvider;
-    scheduleProvider: typeof providers.scheduleProvider;
-    standingsProvider: typeof providers.standingsProvider;
-  };
+  dataSources: typeof providers;
 }
 
 // MARK: composition

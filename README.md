@@ -83,3 +83,15 @@ export const resolvers: IResolvers = {
   }
 };
 ```
+
+## Adding new providers
+
+When creating a new module with a new `provider`, you'll have to add this provider in the `modules/index.ts` file like following:
+
+```ts
+export const providers = {
+  exampleProvider: new ExampleProvider()
+};
+```
+
+After this provider has been added in the `providers` object, you will have to run `npm run generate:types` in order to use in the resolvers.
