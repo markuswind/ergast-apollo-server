@@ -1,18 +1,6 @@
 ## About
 
-A Apollo Server boilerplate with TypeScript support. Including development setup to ensure clean and working code before pushing.
-
-## Included
-
-The following development dependencies are included:
-
-- [typescript](https://github.com/Microsoft/TypeScript)
-- [graphql-codegen](https://github.com/dotansimha/graphql-code-generator)
-- [prettier](https://github.com/prettier/prettier)
-- [commitlint](https://github.com/marionebl/commitlint)
-- [tslint](https://github.com/palantir/tslint)
-- [husky](https://github.com/typicode/husky)
-- [editorconfig](https://editorconfig.org/)
+A Graphql API which serves the Formula 1 result data from `http://ergast.com/`.
 
 ## Getting started
 
@@ -23,6 +11,10 @@ $ git clone https://github.com/markuswind/apollo-server-boilerplate
 $ npm ci
 $ npm run start
 ```
+
+## Caching
+
+Caching is done in the `ErgastDataSource` class inside `src/utils/ErgastDataSource.ts`. This is also where you can set the `default` cache time, which currently is one day. For the results queries like `qualifyingResults`, `standings` and `pitstops` it will use `minutes` cache options when the round is either in the future or in the near past.
 
 ## Adding new (type safe) resolvers
 
