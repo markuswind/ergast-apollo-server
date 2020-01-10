@@ -87,3 +87,7 @@ export const providers = {
 ```
 
 After this provider has been added in the `providers` object, you will have to run `npm run generate:types` in order to use in the resolvers.
+
+## License
+
+[MIT.](https://github.com/markuswind/ergast-apollo-server/blob/master/LICENSE)
