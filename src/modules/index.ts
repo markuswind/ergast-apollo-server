@@ -9,6 +9,7 @@ import * as qualifyingResultsModule from './qualifyingResults';
 import * as resultsModule from './results';
 import * as scheduleModule from './schedule';
 import * as standingsModule from './standings';
+import * as statusModule from './status';
 
 // MARK: base types
 // NOTE: these can be extended in multiple type definitions
@@ -29,7 +30,8 @@ export const providers = {
   qualifyingResultsProvider: new qualifyingResultsModule.QualifyingResultsProvider(),
   resultsProvider: new resultsModule.ResultsProvider(),
   scheduleProvider: new scheduleModule.ScheduleProvider(),
-  standingsProvider: new standingsModule.StandingsProvider()
+  standingsProvider: new standingsModule.StandingsProvider(),
+  statusProvider: new statusModule.StatusProvider()
 };
 
 export const typeDefs = [
@@ -41,7 +43,8 @@ export const typeDefs = [
   qualifyingResultsModule.typeDefs,
   resultsModule.typeDefs,
   scheduleModule.typeDefs,
-  standingsModule.typeDefs
+  standingsModule.typeDefs,
+  statusModule.typeDefs
 ];
 
 export const resolvers = merge(
@@ -52,5 +55,6 @@ export const resolvers = merge(
   qualifyingResultsModule.resolvers,
   resultsModule.resolvers,
   scheduleModule.resolvers,
-  standingsModule.resolvers
+  standingsModule.resolvers,
+  statusModule.resolvers
 );
