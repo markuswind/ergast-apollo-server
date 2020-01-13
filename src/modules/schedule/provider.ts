@@ -11,5 +11,6 @@ export class ScheduleProvider extends ErgastDataSource {
 
   // MARK: result parsing
 
-  private parseRaceTable = (result: any) => result.MRData.RaceTable.Races;
+  private parseRaceTable = (result: any) =>
+    result.MRData.RaceTable?.Races || [];
 }

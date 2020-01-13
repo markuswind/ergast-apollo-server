@@ -18,5 +18,5 @@ export class PitstopsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseRaceTable = (result: any) =>
-    result.MRData.RaceTable.Races[0].PitStops;
+    result.MRData.RaceTable?.Races[0]?.PitStops || [];
 }

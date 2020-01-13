@@ -18,5 +18,6 @@ export class DriversProvider extends ErgastDataSource {
 
   // MARK: result parsing
 
-  private parseDriverTable = (result: any) => result.MRData.DriverTable.Drivers;
+  private parseDriverTable = (result: any) =>
+    result.MRData.DriverTable?.Drivers || [];
 }

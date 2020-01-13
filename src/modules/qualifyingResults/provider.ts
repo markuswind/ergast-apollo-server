@@ -17,5 +17,5 @@ export class QualifyingResultsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseRaceTable = (result: any) =>
-    result.MRData.RaceTable.Races[0].QualifyingResults;
+    result.MRData.RaceTable?.Races[0]?.QualifyingResults || [];
 }

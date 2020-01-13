@@ -30,5 +30,5 @@ export class ConstructorsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseConstructorTable = (result: any) =>
-    result.MRData.ConstructorTable.Constructors;
+    result.MRData.ConstructorTable?.Constructors || [];
 }

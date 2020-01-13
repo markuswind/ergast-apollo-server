@@ -39,8 +39,8 @@ export class StandingsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseConstructorStandingTable = (result: any) =>
-    result.MRData.StandingsTable.StandingsLists[0].ConstructorStandings;
+    result.MRData.StandingsTable?.StandingsLists[0]?.ConstructorStandings || [];
 
   private parseDriverStandingTable = (result: any) =>
-    result.MRData.StandingsTable.StandingsLists[0].DriverStandings;
+    result.MRData.StandingsTable?.StandingsLists[0]?.DriverStandings || [];
 }

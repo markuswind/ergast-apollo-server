@@ -48,5 +48,5 @@ export class ResultsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseRaceTable = (result: any) =>
-    result.MRData.RaceTable.Races[0].Results;
+    result.MRData.RaceTable?.Races[0]?.Results || [];
 }

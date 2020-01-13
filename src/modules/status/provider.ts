@@ -20,5 +20,5 @@ export class StatusProvider extends ErgastDataSource {
 
   // MARK: result parsing
 
-  private parseStatusTable = (result: any) => result.StatusTable.Status;
+  private parseStatusTable = (result: any) => result.StatusTable?.Status || [];
 }

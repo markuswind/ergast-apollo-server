@@ -19,5 +19,5 @@ export class CircuitsProvider extends ErgastDataSource {
   // MARK: result parsing
 
   private parseCircuitTable = (result: any) =>
-    result.MRData.CircuitTable.Circuits;
+    result.MRData.CircuitTable?.Circuits || [];
 }
