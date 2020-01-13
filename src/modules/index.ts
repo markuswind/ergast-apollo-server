@@ -4,6 +4,7 @@ import merge from 'lodash.merge';
 import * as circuitsModule from './circuits';
 import * as constructorsModule from './constructors';
 import * as driversModule from './drivers';
+import * as lapTimesModules from './lapTimes';
 import * as pitstopsModule from './pitstops';
 import * as qualifyingResultsModule from './qualifyingResults';
 import * as resultsModule from './results';
@@ -26,6 +27,7 @@ export const providers = {
   circuitsProvider: new circuitsModule.CircuitsProvider(),
   constructorsProvider: new constructorsModule.ConstructorsProvider(),
   driversProvider: new driversModule.DriversProvider(),
+  lapTimesProvider: new lapTimesModules.LapTimesProvider(),
   pitstopsProvider: new pitstopsModule.PitstopsProvider(),
   qualifyingResultsProvider: new qualifyingResultsModule.QualifyingResultsProvider(),
   resultsProvider: new resultsModule.ResultsProvider(),
@@ -39,6 +41,7 @@ export const typeDefs = [
   circuitsModule.typeDefs,
   constructorsModule.typeDefs,
   driversModule.typeDefs,
+  lapTimesModules.typeDefs,
   pitstopsModule.typeDefs,
   qualifyingResultsModule.typeDefs,
   resultsModule.typeDefs,
@@ -51,6 +54,7 @@ export const resolvers = merge(
   circuitsModule.resolvers,
   constructorsModule.resolvers,
   driversModule.resolvers,
+  lapTimesModules.resolvers,
   pitstopsModule.resolvers,
   qualifyingResultsModule.resolvers,
   resultsModule.resolvers,
