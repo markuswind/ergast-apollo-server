@@ -28,7 +28,7 @@ export type Circuit = {
 
 export type Constructor = {
    __typename?: 'Constructor',
-  color: Scalars['String'],
+  color?: Maybe<Scalars['String']>,
   constructorId: Scalars['String'],
   url: Scalars['String'],
   name: Scalars['String'],
@@ -143,10 +143,10 @@ export type QualifyingResult = {
 export type Query = {
    __typename?: 'Query',
   _empty?: Maybe<Scalars['String']>,
-  circuit?: Maybe<Circuit>,
-  circuits?: Maybe<Array<Circuit>>,
   getConstructor?: Maybe<Constructor>,
   constructors?: Maybe<Array<Constructor>>,
+  circuit?: Maybe<Circuit>,
+  circuits?: Maybe<Array<Circuit>>,
   driver?: Maybe<Driver>,
   drivers?: Maybe<Array<Driver>>,
   pitstops?: Maybe<Array<PitStop>>,
@@ -159,22 +159,22 @@ export type Query = {
 };
 
 
-export type QueryCircuitArgs = {
-  circuitId: Scalars['String']
-};
-
-
-export type QueryCircuitsArgs = {
-  year: Scalars['Int']
-};
-
-
 export type QueryGetConstructorArgs = {
   constructorId: Scalars['String']
 };
 
 
 export type QueryConstructorsArgs = {
+  year: Scalars['Int']
+};
+
+
+export type QueryCircuitArgs = {
+  circuitId: Scalars['String']
+};
+
+
+export type QueryCircuitsArgs = {
   year: Scalars['Int']
 };
 
@@ -351,11 +351,8 @@ export type DirectiveResolverFn<TResult = {}, TParent = {}, TContext = {}, TArgs
 export type ResolversTypes = {
   Query: ResolverTypeWrapper<{}>,
   String: ResolverTypeWrapper<Scalars['String']>,
-  Circuit: ResolverTypeWrapper<Circuit>,
-  Location: ResolverTypeWrapper<Location>,
-  Float: ResolverTypeWrapper<Scalars['Float']>,
-  Int: ResolverTypeWrapper<Scalars['Int']>,
   Constructor: ResolverTypeWrapper<Constructor>,
+  Int: ResolverTypeWrapper<Scalars['Int']>,
   Driver: ResolverTypeWrapper<Driver>,
   Lap: ResolverTypeWrapper<Lap>,
   Timing: ResolverTypeWrapper<Timing>,
@@ -365,6 +362,9 @@ export type ResolversTypes = {
   AverageSpeed: ResolverTypeWrapper<AverageSpeed>,
   Standing: ResolverTypeWrapper<Standing>,
   Status: ResolverTypeWrapper<Status>,
+  Circuit: ResolverTypeWrapper<Circuit>,
+  Location: ResolverTypeWrapper<Location>,
+  Float: ResolverTypeWrapper<Scalars['Float']>,
   PitStop: ResolverTypeWrapper<PitStop>,
   QualifyingResult: ResolverTypeWrapper<QualifyingResult>,
   Race: ResolverTypeWrapper<Race>,
@@ -375,11 +375,8 @@ export type ResolversTypes = {
 export type ResolversParentTypes = {
   Query: {},
   String: Scalars['String'],
-  Circuit: Circuit,
-  Location: Location,
-  Float: Scalars['Float'],
-  Int: Scalars['Int'],
   Constructor: Constructor,
+  Int: Scalars['Int'],
   Driver: Driver,
   Lap: Lap,
   Timing: Timing,
@@ -389,6 +386,9 @@ export type ResolversParentTypes = {
   AverageSpeed: AverageSpeed,
   Standing: Standing,
   Status: Status,
+  Circuit: Circuit,
+  Location: Location,
+  Float: Scalars['Float'],
   PitStop: PitStop,
   QualifyingResult: QualifyingResult,
   Race: Race,
@@ -408,7 +408,7 @@ export type CircuitResolvers<ContextType = Context, ParentType extends Resolvers
 };
 
 export type ConstructorResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Constructor'] = ResolversParentTypes['Constructor']> = {
-  color?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
+  color?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
   constructorId?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   url?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
   name?: Resolver<ResolversTypes['String'], ParentType, ContextType>,
@@ -472,10 +472,10 @@ export type QualifyingResultResolvers<ContextType = Context, ParentType extends 
 
 export type QueryResolvers<ContextType = Context, ParentType extends ResolversParentTypes['Query'] = ResolversParentTypes['Query']> = {
   _empty?: Resolver<Maybe<ResolversTypes['String']>, ParentType, ContextType>,
-  circuit?: Resolver<Maybe<ResolversTypes['Circuit']>, ParentType, ContextType, RequireFields<QueryCircuitArgs, 'circuitId'>>,
-  circuits?: Resolver<Maybe<Array<ResolversTypes['Circuit']>>, ParentType, ContextType, RequireFields<QueryCircuitsArgs, 'year'>>,
   getConstructor?: Resolver<Maybe<ResolversTypes['Constructor']>, ParentType, ContextType, RequireFields<QueryGetConstructorArgs, 'constructorId'>>,
   constructors?: Resolver<Maybe<Array<ResolversTypes['Constructor']>>, ParentType, ContextType, RequireFields<QueryConstructorsArgs, 'year'>>,
+  circuit?: Resolver<Maybe<ResolversTypes['Circuit']>, ParentType, ContextType, RequireFields<QueryCircuitArgs, 'circuitId'>>,
+  circuits?: Resolver<Maybe<Array<ResolversTypes['Circuit']>>, ParentType, ContextType, RequireFields<QueryCircuitsArgs, 'year'>>,
   driver?: Resolver<Maybe<ResolversTypes['Driver']>, ParentType, ContextType, RequireFields<QueryDriverArgs, 'driverId'>>,
   drivers?: Resolver<Maybe<Array<ResolversTypes['Driver']>>, ParentType, ContextType, RequireFields<QueryDriversArgs, 'year'>>,
   pitstops?: Resolver<Maybe<Array<ResolversTypes['PitStop']>>, ParentType, ContextType, RequireFields<QueryPitstopsArgs, 'year' | 'round'>>,
