@@ -1,4 +1,7 @@
 export const constructorEnrichments = {
+  alfa: {
+    color: '#9B0000'
+  },
   ferrari: {
     color: '#DC0000'
   },
