@@ -4,6 +4,8 @@ import {
 } from '../../generated/graphql';
 import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
+import { constructorEnrichments } from './enrichments';
+
 export class ConstructorsProvider extends ErgastDataSource {
   // MARK: api calls
 
@@ -29,6 +31,17 @@ export class ConstructorsProvider extends ErgastDataSource {
 
   // MARK: result parsing
 
-  private parseConstructorTable = (result: any) =>
-    result.MRData.ConstructorTable?.Constructors || [];
+  private parseConstructorTable = (result: any) => {
+    const constructors = result.MRData.ConstructorTable?.Constructors || [];
+
+    return constructors.map(constructor => {
+      const enrichmentData =
+        constructorEnrichments[constructor.constructorId] || {};
+
+      return {
+        ...constructor,
+        ...enrichmentData
+      };
+    });
+  };
 }

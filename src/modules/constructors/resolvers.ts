@@ -3,6 +3,7 @@ import { IResolvers } from '../../generated/graphql';
 
 export const typeDefs = gql`
   type Constructor {
+    color: String!
     constructorId: String!
     url: String!
     name: String!
