@@ -1,8 +1,19 @@
+import { CACHE_TIMES } from '../../constants';
 import { QueryResultsArgs } from '../../generated/graphql';
 import { ErgastDataSource } from '../../utils/ErgastDataSource';
 
 export class ResultsProvider extends ErgastDataSource {
   // MARK: api calls
+
+  public async getLastResults() {
+    const result = await this.get(`/current/last/results.json`, undefined, {
+      cacheOptions: {
+        ttl: CACHE_TIMES.minutes
+      }
+    });
+
+    return this.parseRaceTable(result);
+  }
 
   public async getResults(args: QueryResultsArgs) {
     const cacheOptions = await this.getCacheOptions(args);

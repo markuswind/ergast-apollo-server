@@ -35,15 +35,19 @@ export const typeDefs = gql`
     laps: Int!
     status: String!
     fastestLap: FastestLap!
+    Driver: Driver!
   }
 
   extend type Query {
+    lastResults: [Result!]
     results(year: Int!, round: Int!): [Result!]
   }
 `;
 
 export const resolvers: IResolvers = {
   Query: {
+    lastResults: (_, __, ctx) =>
+      ctx.dataSources.resultsProvider.getLastResults(),
     results: (_, args, ctx) => ctx.dataSources.resultsProvider.getResults(args)
   },
   Constructor: {
