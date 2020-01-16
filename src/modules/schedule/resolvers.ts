@@ -13,12 +13,15 @@ export const typeDefs = gql`
   }
 
   extend type Query {
+    currentSchedule: [Race!]
     schedule(year: Int!): [Race!]
   }
 `;
 
 export const resolvers: IResolvers = {
   Query: {
+    currentSchedule: (_, __, ctx) =>
+      ctx.dataSources.scheduleProvider.getCurrentSchedule(),
     schedule: (_, args, ctx) =>
       ctx.dataSources.scheduleProvider.getSchedule(args)
   }
