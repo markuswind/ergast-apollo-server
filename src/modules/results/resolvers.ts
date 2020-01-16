@@ -3,11 +3,11 @@ import { IResolvers } from '../../generated/graphql';
 
 export const typeDefs = gql`
   extend type Constructor {
-    result(year: Int!, round: Int!): Result!
+    result(year: Int!, round: Int!): Results
   }
 
   extend type Driver {
-    result(year: Int!, round: Int!): Result!
+    result(year: Int!, round: Int!): Results
   }
 
   type AverageSpeed {
@@ -38,9 +38,14 @@ export const typeDefs = gql`
     Driver: Driver!
   }
 
+  type Results {
+    race: Race!
+    results: [Result!]
+  }
+
   extend type Query {
-    lastResults: [Result!]
-    results(year: Int!, round: Int!): [Result!]
+    lastResults: Results
+    results(year: Int!, round: Int!): Results
   }
 `;
 

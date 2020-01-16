@@ -12,7 +12,10 @@ export class ResultsProvider extends ErgastDataSource {
       }
     });
 
-    return this.parseRaceTable(result);
+    return {
+      race: this.parseRace(result),
+      results: this.parseRaceTable(result)
+    };
   }
 
   public async getResults(args: QueryResultsArgs) {
@@ -23,7 +26,10 @@ export class ResultsProvider extends ErgastDataSource {
       cacheOptions
     );
 
-    return this.parseRaceTable(result);
+    return {
+      race: this.parseRace(result),
+      results: this.parseRaceTable(result)
+    };
   }
 
   public async getConstructorResult(args: {
@@ -38,7 +44,10 @@ export class ResultsProvider extends ErgastDataSource {
       cacheOptions
     );
 
-    return this.parseRaceTable(result)[0];
+    return {
+      race: this.parseRace(result),
+      results: this.parseRaceTable(result)
+    };
   }
 
   public async getDriverResult(args: {
@@ -53,11 +62,16 @@ export class ResultsProvider extends ErgastDataSource {
       cacheOptions
     );
 
-    return this.parseRaceTable(result)[0];
+    return {
+      race: this.parseRace(result),
+      results: this.parseRaceTable(result)
+    };
   }
 
   // MARK: result parsing
+  private parseRace = (result: any) =>
+    result.MRData.RaceTable?.Races[0] || {}
 
   private parseRaceTable = (result: any) =>
-    result.MRData.RaceTable?.Races[0]?.Results || [];
+    result.MRData.RaceTable?.Races[0].Results || [];
 }
